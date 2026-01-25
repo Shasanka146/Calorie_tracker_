@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create Account</h2>
+<form method="post" class="form-card">
+    <label>Username</label>
+    <input type="text" name="username" required autofocus />
+
+    <label>Email</label>
+    <input type="email" name="email" required />
+
+    <label>Password</label>
+    <input type="password" name="password" required />
+    <small style="color: #9ca3af; font-size: 0.85rem;">Minimum 6 characters</small>
+
+    <label>Confirm Password</label>
+    <input type="password" name="confirm_password" required />
+
+    <button type="submit" class="btn full-width">Register</button>
+</form>
+
+<p style="margin-top: 1rem; text-align: center; color: #9ca3af;">
+    Already have an account? <a href="{{ url_for('login') }}" style="color: #38bdf8;">Login here</a>
+</p>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Hello, {{ user }}!</h2>
+<p>Enter your details to calculate your calorie needs.</p>
+
+<form method="post" class="form-card grid-2">
+    <label>Age</label>
+    <input type="number" name="age" min="15" max="100" required />
+
+    <label>Gender</label>
+    <select name="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+
+    <label>Height (cm)</label>
+    <input type="number" step="0.1" name="height" required />
+
+    <label>Weight (kg)</label>
+    <input type="number" step="0.1" name="weight" required />
+
+    <label>Activity Level</label>
+    <select name="activity" required>
+        <option value="sedentary">Sedentary</option>
+        <option value="light">Light (1–3 days/week)</option>
+        <option value="moderate">Moderate (3–5 days/week)</option>
+        <option value="active">Active (6–7 days/week)</option>
+    </select>
+
+    <label>Goal</label>
+    <select name="goal" required>
+        <option value="loss">Weight Loss</option>
+        <option value="maintain">Maintain</option>
+        <option value="gain">Weight Gain</option>
+    </select>
+
+    <button type="submit" class="btn full-width">Calculate</button>
+</form>
+
+{% if result %}
+<section class="results">
+    <h3>Your Results</h3>
+    <ul>
+        <li><strong>BMR:</strong> {{ result.bmr }} kcal/day</li>
+        <li><strong>TDEE:</strong> {{ result.tdee }} kcal/day</li>
+        <li><strong>Calorie Target (formula):</strong> {{ result.calorie_target }} kcal/day</li>
+        {% if result.ml_prediction is not none %}
+        <li><strong>ML Prediction:</strong> {{ result.ml_prediction }} kcal/day</li>
+        {% endif %}
+    </ul>
+
+    <h4>Suggested Daily Macros</h4>
+    <ul>
+        <li><strong>Protein:</strong> {{ result.protein_g }} g</li>
+        <li><strong>Carbohydrates:</strong> {{ result.carbs_g }} g</li>
+        <li><strong>Fats:</strong> {{ result.fats_g }} g</li>
+    </ul>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #020617;
+    border-bottom: 1px solid #1f2937;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+nav a,
+nav span.user {
+    margin-left: 1rem;
+    color: #e5e7eb;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: radial-gradient(circle at top, #1d4ed8, #020617);
+    border-radius: 1rem;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    margin-bottom: 1.5rem;
+    color: #cbd5f5;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    color: #022c22;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    filter: brightness(1.1);
+}
+
+.form-card {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: #020617;
+    border-radius: 1rem;
+    border: 1px solid #1f2937;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.form-card label {
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+.form-card input,
+.form-card select {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #4b5563;
+    background: #020617;
+    color: #e5e7eb;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.flashes {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.flashes li {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.flashes li.success {
+    background: #064e3b;
+}
+
+.flashes li.error {
+    background: #7f1d1d;
+}
+
+.results {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #020617;
+    border-radius: 1rem;
+    border: 1px solid #1f2937;
+}
+
+.results h3,
+.results h4 {
+    margin-bottom: 0.5rem;
+}
+
+.results ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #6b7280;
+}

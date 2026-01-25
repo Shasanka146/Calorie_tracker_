@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero">
+    <h2>Welcome to the Smart Calorie Tracker</h2>
+    <p>Calculate your daily calorie needs and get simple nutrition guidance.</p>
+    <a class="btn" href="{{ url_for('login') }}">Get Started</a>
+</section>
+{% endblock %}

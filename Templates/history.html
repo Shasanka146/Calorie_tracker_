@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Your Calculation History</h2>
+<p style="margin-bottom: 1rem; color: #9ca3af;">Your last 20 calorie calculations.</p>
+
+{% if history %}
+<section class="results">
+    <ul style="list-style: none; padding: 0;">
+        {% for h in history %}
+        <li style="padding: 1rem; border-bottom: 1px solid #1f2937; margin-bottom: 0.5rem;">
+            <strong>{{ h.created_at[:16] if h.created_at else 'N/A' }}</strong>
+            <ul style="margin-top: 0.5rem; margin-left: 0;">
+                <li><strong>BMR:</strong> {{ h.bmr }} kcal/day</li>
+                <li><strong>TDEE:</strong> {{ h.tdee }} kcal/day</li>
+                <li><strong>Calorie Target:</strong> {{ h.calorie_target }} kcal/day</li>
+                {% if h.ml_prediction is not none %}<li><strong>ML Prediction:</strong> {{ h.ml_prediction }} kcal/day</li>{% endif %}
+                <li><strong>Protein:</strong> {{ h.protein }} g · <strong>Carbs:</strong> {{ h.carbs }} g · <strong>Fats:</strong> {{ h.fats }} g</li>
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% else %}
+<p style="color: #9ca3af;">No calculations yet. <a href="{{ url_for('dashboard') }}" style="color: #38bdf8;">Calculate your calories</a> to see history here.</p>
+{% endif %}
+
+<p style="margin-top: 1.5rem;">
+    <a class="btn" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</p>
+{% endblock %}
