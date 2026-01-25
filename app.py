@@ -6,6 +6,7 @@ from database.db_helper import (
 from auth.login import authenticate_user
 from auth.register import register_user
 from ml.predict import predict_calories
+from core.exercise import recommend
 import os
 
 app = Flask(__name__)
@@ -103,6 +104,8 @@ def history():
             "protein": pred["protein"],
             "carbs": pred["carbs"],
             "fats": pred["fats"],
+            "exercise_type": pred["exercise_type"],
+            "exercise_duration": pred["exercise_duration"],
             "created_at": pred["created_at"],
         })
     
@@ -179,6 +182,7 @@ def dashboard():
         fats_g = fat_cal / 9
 
         ml_pred = predict_calories(age, gender, height, weight, activity, goal)
+        ex = recommend(goal, activity)
         result = {
             "bmr": round(bmr, 2),
             "tdee": round(tdee, 2),
@@ -188,6 +192,9 @@ def dashboard():
             "fats_g": round(fats_g, 1),
             "goal": goal,
             "ml_prediction": ml_pred,
+            "exercise_type": ex["exercise_type"],
+            "exercise_duration": ex["exercise_duration"],
+            "exercise_frequency": ex["exercise_frequency"],
         }
 
         # Save to database
@@ -202,8 +209,8 @@ def dashboard():
                 protein=result["protein_g"],
                 carbs=result["carbs_g"],
                 fats=result["fats_g"],
-                exercise_type=None,  # Phase 3
-                exercise_duration=None,
+                exercise_type=ex["exercise_type"],
+                exercise_duration=ex["exercise_duration"],
             )
         except Exception as e:
             # Log error but don't break the user experience

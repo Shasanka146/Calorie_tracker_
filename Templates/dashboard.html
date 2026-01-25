@@ -56,6 +56,13 @@
         <li><strong>Carbohydrates:</strong> {{ result.carbs_g }} g</li>
         <li><strong>Fats:</strong> {{ result.fats_g }} g</li>
     </ul>
+
+    <h4>Exercise Recommendation</h4>
+    <ul>
+        <li><strong>Type:</strong> {{ result.exercise_type }}</li>
+        <li><strong>Duration:</strong> {{ result.exercise_duration }} min per session</li>
+        <li><strong>Frequency:</strong> {{ result.exercise_frequency }} days/week</li>
+    </ul>
 </section>
 {% endif %}
 {% endblock %}

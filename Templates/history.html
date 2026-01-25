@@ -16,6 +16,7 @@
                 <li><strong>Calorie Target:</strong> {{ h.calorie_target }} kcal/day</li>
                 {% if h.ml_prediction is not none %}<li><strong>ML Prediction:</strong> {{ h.ml_prediction }} kcal/day</li>{% endif %}
                 <li><strong>Protein:</strong> {{ h.protein }} g · <strong>Carbs:</strong> {{ h.carbs }} g · <strong>Fats:</strong> {{ h.fats }} g</li>
+                {% if h.exercise_type %}<li><strong>Exercise:</strong> {{ h.exercise_type }}, {{ h.exercise_duration or 0 }} min/session</li>{% endif %}
             </ul>
         </li>
         {% endfor %}
